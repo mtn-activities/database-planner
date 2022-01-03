@@ -33,6 +33,6 @@ jobs:
       with:
         file: ./Dockerfile
         push: true
-        tags: mtn-activities/database-planner:1.0.0-SNAPSHOT:${{ steps.time.outputs.time }}
+        tags: mikethenut/database-planner:${{ steps.time.outputs.time }}
 
 
