@@ -9,7 +9,7 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/PlannerDS
-      connection-url: jdbc:postgresql://pg-planner:5432/planner
+      connection-url: jdbc:postgresql://abul.db.elephantsql.com:5432/wvtspbbe
       username: dbuser
       password: postgres
 
