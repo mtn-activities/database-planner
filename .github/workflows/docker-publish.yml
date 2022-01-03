@@ -18,6 +18,11 @@ jobs:
       with:
         timeZone: 1
         format: 'YYYY-MM-DD-HH-mm-ss'
+    - name: Test time string
+      env:
+        TIME: "${{ steps.time.outputs.time }}"
+      run: |
+        echo $TIME
 
     - uses: docker/setup-qemu-action@v1
     
