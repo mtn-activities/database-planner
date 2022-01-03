@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planner-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: planner-deployment
+  template:
+    metadata:
+      labels:
+        app: planner-deployment
+    spec:
+      containers:
+        - image: mikethenut/database-planner:latest
+          name: planner-deployment
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://abul.db.elephantsql.com:5432/wvtspbbe
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: wvtspbbe
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: plannerpass
+                  key: KUMULUZEE_DATASOURCES0_PASSWORD
+          ports:
+            - containerPort: 8080
+              name: server
+              protocol: TCP
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: planner-deployment
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: planner-deployment
