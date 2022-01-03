@@ -33,6 +33,6 @@ jobs:
       with:
         file: ./Dockerfile
         push: true
-        tags: mikethenut/database-planner:${{ steps.time.outputs.time }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/database-planner:${{ steps.time.outputs.time }}
 
 
