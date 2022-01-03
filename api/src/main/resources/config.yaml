@@ -10,7 +10,7 @@ kumuluzee:
   datasources:
     - jndi-name: jdbc/PlannerDS
       connection-url: jdbc:postgresql://abul.db.elephantsql.com:5432/wvtspbbe
-      username: dbuser
+      username: wvtspbbe
       password: postgres
 
 rest-properties:
